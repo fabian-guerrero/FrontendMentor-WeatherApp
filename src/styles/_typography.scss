@@ -1,0 +1,65 @@
+@use "./tokens" as *;
+
+.text-preset-1 {
+  font-family: $font-dm-sans;
+  font-size: 96px;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: $letter-spacing-tight;
+}
+
+.text-preset-2 {
+  font-family: $font-bricolage;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: $line-height-lg;
+}
+
+.text-preset-3 {
+  font-family: $font-dm-sans;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: $line-height-sm;
+}
+
+.text-preset-4 {
+  font-family: $font-dm-sans;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: $line-height-lg;
+}
+
+.text-preset-5 {
+  font-family: $font-dm-sans;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: $line-height-lg;
+}
+
+.text-preset-5-medium {
+  font-family: $font-dm-sans;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: $line-height-lg;
+}
+
+.text-preset-6 {
+  font-family: $font-dm-sans;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: $line-height-lg;
+}
+
+.text-preset-7 {
+  font-family: $font-dm-sans;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: $line-height-lg;
+}
+
+.text-preset-8 {
+  font-family: $font-dm-sans;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: $line-height-lg;
+}
