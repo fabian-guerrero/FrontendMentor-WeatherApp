@@ -1,9 +1,10 @@
 import "./App.scss";
+import Header from "./components/Header/Header.tsx";
 
 function App() {
   return (
     <>
-      <h1>Vite + React</h1>
+      <Header />
     </>
   );
 }

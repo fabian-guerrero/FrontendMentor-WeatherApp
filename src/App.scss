@@ -1,0 +1,36 @@
+@use "./styles/breakpoints.scss" as *;
+@use "./styles/tokens.scss" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  background-color: $color-neutral-900;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  max-width: 1216px;
+  margin: 0 auto;
+}
+
+body {
+  margin: $spacing-200 $spacing-200 $spacing-600 $spacing-200;
+
+  @include respond-to(md) {
+    margin: $spacing-300 $spacing-300 $spacing-1000 $spacing-300;
+  }
+}
+
+h1,
+p {
+  margin: 0;
+  padding: 0;
+}

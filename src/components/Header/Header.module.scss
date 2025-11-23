@@ -1,0 +1,33 @@
+@use "../../styles/breakpoints.scss" as *;
+@use "../../styles/tokens.scss" as *;
+
+.header {
+  text-align: center;
+}
+
+.logoSelectorContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 197px;
+  height: auto;
+}
+
+.title {
+  display: inline-block;
+  color: $color-neutral-0;
+  padding: $spacing-600 $spacing-075;
+
+  @include respond-to(md) {
+    max-width: 482px;
+  }
+
+  @include respond-to(lg) {
+    max-width: 800px;
+    padding: $spacing-800 0;
+  }
+}
