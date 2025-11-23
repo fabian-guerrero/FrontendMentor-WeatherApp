@@ -1,0 +1,68 @@
+@use "../../styles/breakpoints.scss" as *;
+@use "../../styles/tokens.scss" as *;
+
+.searchBarWrapper {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: $spacing-150;
+
+  @include respond-to(md) {
+    flex-direction: row;
+  }
+
+  @include respond-to(lg) {
+    margin: 0 auto;
+    max-width: 656px;
+  }
+}
+
+.searchInput {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+
+.loadingResultsWrapper {
+  position: absolute;
+  width: 100%;
+  background-color: $color-neutral-800;
+  border: 1px solid $color-neutral-700;
+  padding: $spacing-100;
+  border-radius: $border-radius-12;
+  margin-top: 16px;
+  color: $color-neutral-0;
+}
+
+.loadingMessage {
+  display: flex;
+  align-items: center;
+  gap: $spacing-125;
+  padding: 10px 8px;
+}
+
+.searchResults {
+  position: absolute;
+  width: 100%;
+}
+
+.searchResultsList {
+  background-color: $color-neutral-800;
+  border: 1px solid $color-neutral-700;
+  padding: $spacing-100;
+  border-radius: $border-radius-12;
+
+  .searchResultItem {
+    color: $color-neutral-0;
+    border: 1px solid transparent;
+    padding: $spacing-125 $spacing-100;
+    list-style-type: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-neutral-700;
+      border: 1px solid $color-neutral-600;
+      border-radius: $border-radius-8;
+    }
+  }
+}
