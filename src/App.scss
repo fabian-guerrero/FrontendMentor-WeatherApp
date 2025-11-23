@@ -34,3 +34,20 @@ p {
   margin: 0;
   padding: 0;
 }
+
+.mainTitle {
+  display: block;
+  margin: 0 auto;
+  color: $color-neutral-0;
+  padding: $spacing-600 $spacing-075;
+  text-align: center;
+
+  @include respond-to(md) {
+    max-width: 482px;
+  }
+
+  @include respond-to(lg) {
+    max-width: 800px;
+    padding: $spacing-800 0;
+  }
+}
