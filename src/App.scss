@@ -138,3 +138,9 @@ p {
     gap: $spacing-200;
   }
 }
+
+.noResults {
+  margin-top: $spacing-600;
+  text-align: center;
+  color: $color-neutral-0;
+}
