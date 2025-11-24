@@ -36,7 +36,7 @@ export function useWeather(selectedLocation: LocationData | null) {
           location: selectedLocation.name,
           country: selectedLocation.country,
           current: {
-            date: current.time(),
+            date: new Date((Number(current.time()) + utcOffsetSeconds) * 1000),
             temperature: current.variables(0)!.value(),
             weatherCode: current.variables(4)!.value(),
             feelsLike: current.variables(1)!.value(),
