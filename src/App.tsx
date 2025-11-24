@@ -5,8 +5,9 @@ import { useWeather } from "./hooks/useWeather";
 import type { LocationData } from "./types/weather";
 import Header from "./components/Header/Header.tsx";
 import SearchBar from "./components/SearchBar/SearchBar.tsx";
-import WeatherInfoCard from "./components/WeatherInfoCard/WeatherInfoCard";
+import WeatherInfoCard from "./components/WeatherInfoCard/WeatherInfoCard.tsx";
 import WeatherDetailCard from "./components/WeatherDetailCard/WeatherDetailCard.tsx";
+import DailyForecastCard from "./components/DailyForecastCard/DailyForecastCard.tsx";
 
 function App() {
   const [selectedLocation, setSelectedLocation] = useState<LocationData | null>(
@@ -44,6 +45,20 @@ function App() {
                 label="Precipitation"
                 value={weather.current.precipitation}
               />
+            </div>
+            <div className="dailyForecastContainer">
+              <p className="title text-preset-5">Daily forecast</p>
+              <div className="dailyCardContainer">
+                {weather.daily.map((item, index) => (
+                  <DailyForecastCard
+                    key={index}
+                    date={item.date.toString()}
+                    icon={item.icon}
+                    max={item.max}
+                    min={item.min}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         )}

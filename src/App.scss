@@ -63,3 +63,46 @@ p {
     column-gap: 2.631%;
   }
 }
+
+.weatherDetailsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-200;
+  padding-top: $spacing-250;
+
+  @include respond-to(md) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: $spacing-250;
+  }
+
+  @include respond-to(lg) {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    padding-top: $spacing-400;
+  }
+}
+
+.dailyForecastContainer {
+  padding-top: $spacing-400;
+
+  @include respond-to(lg) {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    padding-top: $spacing-600;
+  }
+
+  .dailyCardContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: $spacing-200;
+
+    @include respond-to(md) {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+  }
+
+  .title {
+    color: $color-neutral-0;
+    margin-bottom: $spacing-250;
+  }
+}
