@@ -6,6 +6,7 @@ import type { LocationData } from "./types/weather";
 import Header from "./components/Header/Header.tsx";
 import SearchBar from "./components/SearchBar/SearchBar.tsx";
 import WeatherInfoCard from "./components/WeatherInfoCard/WeatherInfoCard";
+import WeatherDetailCard from "./components/WeatherDetailCard/WeatherDetailCard.tsx";
 
 function App() {
   const [selectedLocation, setSelectedLocation] = useState<LocationData | null>(
@@ -26,6 +27,24 @@ function App() {
         {weather && (
           <div className="searchResultWrapper">
             <WeatherInfoCard data={weather} />
+            <div className="WeatherDetailsContainer">
+              <WeatherDetailCard
+                label="Feels Like"
+                value={weather.current.feelsLike}
+              />
+              <WeatherDetailCard
+                label="Humidity"
+                value={weather.current.humidity}
+              />
+              <WeatherDetailCard
+                label="Wind"
+                value={weather.current.windSpeed}
+              />
+              <WeatherDetailCard
+                label="Precipitation"
+                value={weather.current.precipitation}
+              />
+            </div>
           </div>
         )}
       </main>
