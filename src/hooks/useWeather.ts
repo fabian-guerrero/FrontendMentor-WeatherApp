@@ -54,9 +54,9 @@ export function useWeather(selectedLocation: LocationData | null) {
               (Number(daily.time()) + i * daily.interval() + utcOffsetSeconds) *
                 1000
             ),
-            min: daily.variables(1)!.valuesArray()[i],
-            max: daily.variables(0)!.valuesArray()[i],
-            icon: daily.variables(2)!.valuesArray()[i],
+            min: daily.variables(1)!.valuesArray()![i],
+            max: daily.variables(0)!.valuesArray()![i],
+            icon: daily.variables(2)!.valuesArray()![i],
           })),
           hourly: [
             ...Array(
@@ -70,8 +70,8 @@ export function useWeather(selectedLocation: LocationData | null) {
                 utcOffsetSeconds) *
                 1000
             ),
-            temperature: hourly.variables(0)!.valuesArray()[i],
-            weatherCode: hourly.variables(1)!.valuesArray()[i],
+            temperature: hourly.variables(0)!.valuesArray()![i],
+            weatherCode: hourly.variables(1)!.valuesArray()![i],
           })),
         };
 

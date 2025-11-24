@@ -16,10 +16,10 @@ function App() {
     null
   );
 
-  const { weather, loadingWeather, errorWeather } =
-    useWeather(selectedLocation);
+  const { weather, errorWeather } = useWeather(selectedLocation);
 
   const [selectedDate, setSelectedDate] = useState<string>("");
+  const [noResults, setNoResults] = useState(false);
 
   const availableDates = weather
     ? weather.daily.map((d) => d.date.toISOString())
@@ -75,12 +75,23 @@ function App() {
         <h1 className="mainTitle text-preset-2">
           How’s the sky looking today?
         </h1>
-        <SearchBar onSelectLocation={setSelectedLocation} />
+        <SearchBar
+          onSelectLocation={setSelectedLocation}
+          onSetNoResults={(v) => {
+            setNoResults(v);
+            if (v) {
+              setSelectedDate("");
+              setSelectedLocation(null);
+            }
+          }}
+        />
       </div>
       <main>
-        {loadingWeather && <p>Cargando clima...</p>}
         {errorWeather && <p>{errorWeather}</p>}
-        {weather && (
+        {noResults && (
+          <p className="noResults text-preset-4">No search result found!</p>
+        )}
+        {!noResults && weather && selectedLocation && (
           <div className="searchResultWrapper">
             <WeatherInfoCard data={weather} />
             <div className="weatherDetailsContainer">
