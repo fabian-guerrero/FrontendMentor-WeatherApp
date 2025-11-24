@@ -51,3 +51,15 @@ p {
     padding: $spacing-800 0;
   }
 }
+
+.searchResultWrapper {
+  padding-top: $spacing-400;
+
+  @include respond-to(lg) {
+    max-width: 1216px;
+    display: grid;
+    grid-template-columns: 65.79% 31.579%;
+    grid-template-rows: auto auto auto;
+    column-gap: 2.631%;
+  }
+}

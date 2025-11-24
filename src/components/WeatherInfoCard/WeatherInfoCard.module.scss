@@ -1,0 +1,67 @@
+@use "../../styles/breakpoints.scss" as *;
+@use "../../styles/tokens.scss" as *;
+
+.weatherInfoCard {
+  display: inline-flex;
+  flex-direction: column;
+  gap: $spacing-200;
+  aspect-ratio: 343/286;
+  width: 100%;
+  padding: 41px 24px;
+  background-image: url("/images/mobile-hero.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: $border-radius-20;
+  overflow: hidden;
+
+  @include respond-to(md) {
+    background-image: url("/images/desktop-hero.png");
+    aspect-ratio: 720/286;
+    flex-direction: row;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 24px;
+  }
+
+  @include respond-to(lg) {
+    aspect-ratio: 800/286;
+  }
+}
+
+.locationInfoWrapper {
+  text-align: center;
+
+  @include respond-to(md) {
+    text-align: left;
+  }
+}
+
+.location,
+.date,
+.temparature {
+  color: $color-neutral-0;
+}
+
+.date {
+  opacity: 0.8;
+}
+
+.temperatureWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-250;
+}
+
+.temperatureIcon {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+  }
+}
