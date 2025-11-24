@@ -53,9 +53,10 @@ export default function SearchBar({ onSelectLocation }: Props) {
   };
 
   const handleClickLocation = (item: LocationData) => {
-    onSelectLocation(item); // 👈 devolvemos la ciudad seleccionada
-    setShowResults(false); // 👈 cerramos la lista de resultados
-    setResults([]); // limpiamos resultados
+    onSelectLocation(item);
+    setQuery("");
+    setShowResults(false);
+    setResults([]);
   };
 
   return (
