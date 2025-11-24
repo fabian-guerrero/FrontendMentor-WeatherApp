@@ -3,7 +3,6 @@ import ForecastIcon from "../ForecastIcon/ForecastIcon";
 import { roundValue, formatDateDay } from "../../utils/mathConvertions";
 
 type DailyForecastCardProps = {
-  key: number;
   date: string;
   icon: number;
   max: number;
@@ -11,14 +10,13 @@ type DailyForecastCardProps = {
 };
 
 export default function DailyForecastCard({
-  key,
   date,
   icon,
   max,
   min,
 }: DailyForecastCardProps) {
   return (
-    <div key={key} className={styles.dailyForecastCard}>
+    <div className={styles.dailyForecastCard}>
       <p className={`${styles.dayLabel} text-preset-6`}>
         {formatDateDay(date)}
       </p>

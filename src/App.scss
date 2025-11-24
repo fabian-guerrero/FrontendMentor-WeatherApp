@@ -106,3 +106,35 @@ p {
     margin-bottom: $spacing-250;
   }
 }
+
+.hourlyForecastContainer {
+  padding: $spacing-250 $spacing-200;
+  margin-top: $spacing-400;
+  background-color: $color-neutral-800;
+  border-radius: $spacing-250;
+
+  @include respond-to(lg) {
+    margin-top: 0;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 4;
+  }
+
+  .headerWrapper {
+    margin-bottom: $spacing-200;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .title {
+    color: $color-neutral-0;
+  }
+
+  .hourlyCardContainer {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-200;
+  }
+}
