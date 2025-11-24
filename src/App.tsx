@@ -64,9 +64,7 @@ function App() {
       );
       setSelectedDate(todayMatch || availableDates[0]);
     }
-
-    console.log(weather);
-  }, [weather]);
+  }, [weather, availableDates]);
 
   return (
     <>
