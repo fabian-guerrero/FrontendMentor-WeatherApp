@@ -1,13 +1,18 @@
 import "./App.scss";
 
 import { useState } from "react";
+import { useWeather } from "./hooks/useWeather";
+import type { LocationData } from "./types/weather";
 import Header from "./components/Header/Header.tsx";
 import SearchBar from "./components/SearchBar/SearchBar.tsx";
+import WeatherInfoCard from "./components/WeatherInfoCard/WeatherInfoCard";
 
 function App() {
   const [selectedLocation, setSelectedLocation] = useState<LocationData | null>(
     null
   );
+  const { weather, loadingWeather, errorWeather } =
+    useWeather(selectedLocation);
 
   return (
     <>
@@ -16,11 +21,12 @@ function App() {
       <SearchBar onSelectLocation={setSelectedLocation} />
 
       <main>
-        {selectedLocation && (
-          <p>
-            Ciudad seleccionada: {selectedLocation.name},{" "}
-            {selectedLocation.country}
-          </p>
+        {loadingWeather && <p>Cargando clima...</p>}
+        {errorWeather && <p>{errorWeather}</p>}
+        {weather && (
+          <div className="searchResultWrapper">
+            <WeatherInfoCard data={weather} />
+          </div>
         )}
       </main>
     </>

@@ -1,18 +1,22 @@
-import IconSvg from "../IconSvg/IconSvg";
 import styles from "./UnitsSelector.module.scss";
+
+import IconSvg from "../IconSvg/IconSvg";
 import { useState } from "react";
+import { useUnits } from "../../context";
 
 export default function UnitsSelector() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isImperial, setIsImperial] = useState(false);
+  const { units, setUnits } = useUnits();
 
   const handleUnitsSelector = () => {
     setIsOpen(!isOpen);
   };
 
   const toggleUnits = () => {
-    setIsImperial(!isImperial);
+    setUnits(units === "metric" ? "imperial" : "metric");
   };
+
+  const isImperial = units === "imperial";
 
   return (
     <div className={styles.unitsSelector}>
