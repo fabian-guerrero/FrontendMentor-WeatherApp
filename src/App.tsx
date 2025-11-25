@@ -10,13 +10,15 @@ import WeatherDetailCard from "./components/WeatherDetailCard/WeatherDetailCard.
 import DailyForecastCard from "./components/DailyForecastCard/DailyForecastCard.tsx";
 import DaySelector from "./components/DaySelector/DaySelector.tsx";
 import HourlyWeatherCard from "./components/HourlyWeatherCard/HourlyWeatherCard.tsx";
+import ApiErrorMessage from "./components/ApiErrorMessage/ApiErrorMessage.tsx";
 
 function App() {
   const [selectedLocation, setSelectedLocation] = useState<LocationData | null>(
     null
   );
 
-  const { weather, errorWeather } = useWeather(selectedLocation);
+  const { weather, errorWeather, setErrorWeather } =
+    useWeather(selectedLocation);
 
   const [selectedDate, setSelectedDate] = useState<string>("");
   const [noResults, setNoResults] = useState(false);
@@ -56,6 +58,10 @@ function App() {
 
   const hourlyForDay = getHourlyForDay();
 
+  const handleRetry = () => {
+    setErrorWeather(null);
+  };
+
   useEffect(() => {
     if (weather && availableDates.length > 0) {
       const today = new Date().toDateString();
@@ -69,84 +75,90 @@ function App() {
   return (
     <>
       <Header />
-      <div>
-        <h1 className="mainTitle text-preset-2">
-          How’s the sky looking today?
-        </h1>
-        <SearchBar
-          onSelectLocation={setSelectedLocation}
-          onSetNoResults={(v) => {
-            setNoResults(v);
-            if (v) {
-              setSelectedDate("");
-              setSelectedLocation(null);
-            }
-          }}
-        />
-      </div>
-      <main>
-        {errorWeather && <p>{errorWeather}</p>}
-        {noResults && (
-          <p className="noResults text-preset-4">No search result found!</p>
-        )}
-        {!noResults && weather && selectedLocation && (
-          <div className="searchResultWrapper">
-            <WeatherInfoCard data={weather} />
-            <div className="weatherDetailsContainer">
-              <WeatherDetailCard
-                label="Feels Like"
-                value={weather.current.feelsLike}
-              />
-              <WeatherDetailCard
-                label="Humidity"
-                value={weather.current.humidity}
-              />
-              <WeatherDetailCard
-                label="Wind"
-                value={weather.current.windSpeed}
-              />
-              <WeatherDetailCard
-                label="Precipitation"
-                value={weather.current.precipitation}
-              />
-            </div>
-            <div className="dailyForecastContainer">
-              <p className="title text-preset-5">Daily forecast</p>
-              <div className="dailyCardContainer">
-                {weather.daily.map((item, index) => (
-                  <DailyForecastCard
-                    key={index}
-                    date={item.date.toString()}
-                    icon={item.icon}
-                    max={item.max}
-                    min={item.min}
-                  />
-                ))}
-              </div>
-            </div>
-            <div className="hourlyForecastContainer">
-              <div className="headerWrapper">
-                <p className="title text-preset-5">Hourly Forecast</p>
-                <DaySelector
-                  availableDates={availableDates}
-                  selectedDate={selectedDate || availableDates[0]}
-                  onSelect={setSelectedDate}
-                />
-              </div>
-              <div className="hourlyCardContainer">
-                {hourlyForDay.map((item, index) => (
-                  <HourlyWeatherCard
-                    key={index}
-                    date={item.date.toString()}
-                    icon={item.weatherCode}
-                    temperature={item.temperature}
-                  />
-                ))}
-              </div>
-            </div>
+      {errorWeather ? (
+        <ApiErrorMessage onRetry={handleRetry} />
+      ) : (
+        <>
+          <div>
+            <h1 className="mainTitle text-preset-2">
+              How’s the sky looking today?
+            </h1>
+            <SearchBar
+              onSelectLocation={setSelectedLocation}
+              onSetNoResults={(v) => {
+                setNoResults(v);
+                if (v) {
+                  setSelectedDate("");
+                  setSelectedLocation(null);
+                }
+              }}
+            />
           </div>
-        )}
-      </main>
+          <main>
+            {errorWeather && <p>{errorWeather}</p>}
+            {noResults && (
+              <p className="noResults text-preset-4">No search result found!</p>
+            )}
+            {!noResults && weather && selectedLocation && (
+              <div className="searchResultWrapper">
+                <WeatherInfoCard data={weather} />
+                <div className="weatherDetailsContainer">
+                  <WeatherDetailCard
+                    label="Feels Like"
+                    value={weather.current.feelsLike}
+                  />
+                  <WeatherDetailCard
+                    label="Humidity"
+                    value={weather.current.humidity}
+                  />
+                  <WeatherDetailCard
+                    label="Wind"
+                    value={weather.current.windSpeed}
+                  />
+                  <WeatherDetailCard
+                    label="Precipitation"
+                    value={weather.current.precipitation}
+                  />
+                </div>
+                <div className="dailyForecastContainer">
+                  <p className="title text-preset-5">Daily forecast</p>
+                  <div className="dailyCardContainer">
+                    {weather.daily.map((item, index) => (
+                      <DailyForecastCard
+                        key={index}
+                        date={item.date.toString()}
+                        icon={item.icon}
+                        max={item.max}
+                        min={item.min}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div className="hourlyForecastContainer">
+                  <div className="headerWrapper">
+                    <p className="title text-preset-5">Hourly Forecast</p>
+                    <DaySelector
+                      availableDates={availableDates}
+                      selectedDate={selectedDate || availableDates[0]}
+                      onSelect={setSelectedDate}
+                    />
+                  </div>
+                  <div className="hourlyCardContainer">
+                    {hourlyForDay.map((item, index) => (
+                      <HourlyWeatherCard
+                        key={index}
+                        date={item.date.toString()}
+                        icon={item.weatherCode}
+                        temperature={item.temperature}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </main>
+        </>
+      )}
     </>
   );
 }
