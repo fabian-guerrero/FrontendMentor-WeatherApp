@@ -8,14 +8,14 @@
   aspect-ratio: 343/286;
   width: 100%;
   padding: 41px 24px;
-  background-image: url("/images/mobile-hero.png");
+  background-image: url("/images/mobile-hero.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: $border-radius-20;
   overflow: hidden;
 
   @include respond-to(md) {
-    background-image: url("/images/desktop-hero.png");
+    background-image: url("/images/desktop-hero.jpg");
     aspect-ratio: 720/286;
     flex-direction: row;
     flex-direction: row;
