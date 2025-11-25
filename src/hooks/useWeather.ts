@@ -88,5 +88,5 @@ export function useWeather(selectedLocation: LocationData | null) {
     fetchWeather();
   }, [selectedLocation, units]);
 
-  return { weather, loadingWeather, errorWeather };
+  return { weather, loadingWeather, errorWeather, setErrorWeather };
 }
