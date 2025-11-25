@@ -10,6 +10,7 @@ export default defineConfig({
       },
     }),
   ],
+  base: "/FrontendMentor-WeatherApp/",
   test: {
     environment: "jsdom",
     setupFiles: ["./src/setupTests.ts"],
