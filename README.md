@@ -36,6 +36,7 @@ This project is part of a [Frontend Mentor](https://www.frontendmentor.io/) chal
 
 ## 📂 Project Structure
 
+```
 /src
 ├── /components     # UI components (SearchBar, WeatherInfoCard, etc.)
 ├── /hooks          # Custom hooks (useWeather)
