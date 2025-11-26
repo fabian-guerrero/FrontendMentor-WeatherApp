@@ -45,7 +45,7 @@ This project is part of a [Frontend Mentor](https://www.frontendmentor.io/) chal
 ├── App.tsx         # Root component
 ├── main.tsx        # Entry point
 └── setupTests.ts   # Vitest configuration
-
+```
 ---
 
 ## ⚙️ Installation & Usage
