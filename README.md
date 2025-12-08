@@ -1,75 +1,107 @@
-# React + TypeScript + Vite
+# 🌤️ Frontend Mentor - Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive weather application built with **React + TypeScript + Vite**, consuming the **Open-Meteo API** to provide detailed forecasts.  
+This project is part of a [Frontend Mentor](https://www.frontendmentor.io/) challenge and is deployed via **GitHub Pages**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Demo
 
-## React Compiler
+👉 [Live Demo on GitHub Pages](https://fabian-guerrero.github.io/FrontendMentor-WeatherApp/)
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 🔍 **City search** with autocomplete
+- 🌡️ **Unit conversion** (Celsius ↔ Fahrenheit)
+- 📅 **Daily and hourly forecasts** with day selector
+- 📱 **Responsive and accessible design**
+- ⚡ **Modular architecture** with reusable components
+- 🧪 **Unit and integration tests** using Vitest + React Testing Library
+- 🔄 **Automated CI/CD** with GitHub Actions (tests, build, deploy to Pages)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/) bundler
+- [SCSS Modules](https://sass-lang.com/) for styling
+- [Open-Meteo API](https://open-meteo.com/) for weather data
+- [Vitest](https://vitest.dev/) + [React Testing Library](https://testing-library.com/) for testing
+- [GitHub Actions](https://docs.github.com/en/actions) for CI/CD
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 📂 Project Structure
+
+```
+/src
+├── /components     # UI components (SearchBar, WeatherInfoCard, etc.)
+├── /hooks          # Custom hooks (useWeather)
+├── /assets         # Icons and resources
+├── /styles         # SCSS modules
+├── App.tsx         # Root component
+├── main.tsx        # Entry point
+└── setupTests.ts   # Vitest configuration
+```
+---
+
+## ⚙️ Installation & Usage
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/fabian-guerrero/FrontendMentor-WeatherApp.git
+   cd FrontendMentor-WeatherApp
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run in development mode:
+   ```bash
+   npm run dev
+   ```
+4. Build for production:
+   ```bash
+   npm run build
+   ```
+5. Preview the build:
+   ```bash
+   npm run preview
+   ```
+
+---
+
+## 🧪 Testing
+
+Run tests locally:
+
+```bash
+npm run test
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+In CI/CD:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run test:run
 ```
+
+---
+
+## 🔄 CI/CD Workflow
+
+The project includes a GitHub Actions workflow that:
+
+Runs tests with Vitest
+
+Builds the project with Vite
+
+Publishes automatically to the gh-pages branch for GitHub Pages
+
+---
+
+## 👨‍💻 Author
+
+Developed by Fabián Guerrero Frontend Developer focused on building accessible, modular, and user‑friendly web interfaces.
